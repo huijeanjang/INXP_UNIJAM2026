@@ -23,10 +23,12 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 1
+      bgPos: {x: 0, y: -460}
     Texts:
     - dialogueText: "\uC81C\uAC00 \uC5F4\uC2EC\uD788 \u201C\uB300\uD559\uAD50 \uC2DC\uC808\u201D\uC758
         \uCD94\uC5B5\uC744 \uAC00\uC838\uC654\uC5B4\uC694!"
-      textPos: {x: 0, y: -350}
+      textPos: {x: 0, y: -455}
       textAlignment: 514
       fadeSettings:
         useFade: 1
@@ -55,6 +57,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts: []
     moveImages:
     - sprite: {fileID: 21300000, guid: 889bbfb21888a4aaf948e0411e7ef37e, type: 3}
@@ -89,6 +93,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uCC98\uC74C\uC5D0 \uC815\uB9D0 \uC790\uB791\uC2A4\uB7FD\uAC8C
         \uC785\uC5C8\uC5B4."
@@ -121,6 +127,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB0B4\uAC00 \uADF8 \uAC04\uD310\uC758 \uBB34\uAC8C\uBCF4\uB2E4
         \uBABB\uB09C \uC0AC\uB78C\uC774\uB77C\uACE0 \uB290\uAEF4\uC9C0\uAE30 \uC804\uAE4C\uC9C0\uB294."
@@ -153,6 +161,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC5F4\uC2EC\uD788 \uACF5\uBD80\uD558\uB824\uACE0 \uB178\uB825\uD588\uC5B4."
       textPos: {x: 0, y: -350}
@@ -184,6 +194,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC2DC\uD5D8 \uC9C1\uC804 \uBCBC\uB77D\uCE58\uAE30\uB85C \uBE7D\uBE7D\uD55C
         \uB178\uD2B8\uB294 \uC815\uB9D0 \uBFCC\uB4EF\uD588\uB358 \uAC70 \uAC19\uC544.
@@ -217,6 +229,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC219\uCDE8\uD574\uC18C\uC81C\uB97C \uCC38 \uB9CE\uC774 \uBA39\uC5C8\uC5B4."
       textPos: {x: 0, y: -350}
@@ -248,6 +262,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC990\uAC70\uC6B8 \uB54C\uB3C4, \uC2AC\uD50C \uB54C\uB3C4."
       textPos: {x: 0, y: -350}
@@ -279,6 +295,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB300\uD559 \uC2DC\uC808 \uB0B4\uB0B4 \uB098\uC640 \uD568\uAED8\uD588\uB358
         \uD2BC\uD2BC\uD55C \uC6B4\uB3D9\uD654\uC57C.\n\uD568\uAED8 \uC9C0\uD558\uCCA0
@@ -312,6 +330,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB3D9\uC544\uB9AC\uBC29\uC5D0\uC11C \uD63C\uC790 \uC5F0\uC8FC\uD558\uACE0,
         \uB610 \uC5F0\uC8FC\uD588\uC5B4."
@@ -344,6 +364,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uADF8\uB7EC\uB2E4\uAC00 \uC5B4\uB290\uB0A0 \uBB34\uB300 \uC704\uC5D0\uC11C
         \uB2E4\uAC19\uC774 \uACF5\uC5F0\uD588\uC744 \uB54C\uB97C \uC78A\uC9C0 \uBABB

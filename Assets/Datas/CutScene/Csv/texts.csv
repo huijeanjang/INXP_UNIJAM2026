@@ -69,7 +69,7 @@
 04_ItemCutScene,8,0,"주기적으로 신경써줬어야 하는데, 잊을만 하면 물을 주고 그랬던 거 같아.",0,-350,Center,TRUE,0,0.5,0
 04_ItemCutScene,9,0,그래도 죽지 않아줘서 고마워.,0,-350,Center,TRUE,0,0.5,0
 04_Stage4_CutScene,0,0,취업을 하면 좀 평안하게 살 수 있을 줄 알았지.,-100,400,Left,TRUE,0,0.5,0
-04_Stage4_CutScene,1,0,그런데 나를 힘들게 하는 것들이 끊임없이 밀려오더라.,100,-400,Right,TRUE,0,0.5,0
+04_Stage4_CutScene,1,0,"그런데,\n나를 힘들게 하는 것들이\n끊임없이 밀려오더라.",90,-360,Right,TRUE,0,0.5,0
 04_Stage4_CutScene,2,0,"맞아요.\n상사도, 동기도, 출퇴근도. 뭐 하나 괜찮은 게 없었어요.",0,100,Right,TRUE,0,0.5,0
 04_Stage4_CutScene,3,0,"앞이 전혀 보이지 않았고,\n모든 걸 끝내고 싶었던 적도 있었지.",0,100,Right,TRUE,0,0.5,0
 04_Stage4_CutScene,4,0,하지만 그러지 않으셨죠.,200,0,Center,TRUE,0,0.5,0

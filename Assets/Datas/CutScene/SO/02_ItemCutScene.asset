@@ -23,10 +23,12 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 1
+      bgPos: {x: 0, y: -460}
     Texts:
     - dialogueText: "\uC81C\uAC00 \uC5F4\uC2EC\uD788 \u201C\uACE0\uB4F1\uD559\uAD50
         \uC2DC\uC808\u201D\uC758 \uCD94\uC5B5\uC744 \uAC00\uC838\uC654\uC5B4\uC694!"
-      textPos: {x: 0, y: -350}
+      textPos: {x: 0, y: -455}
       textAlignment: 514
       fadeSettings:
         useFade: 1
@@ -55,6 +57,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts: []
     moveImages:
     - sprite: {fileID: 21300000, guid: 889bbfb21888a4aaf948e0411e7ef37e, type: 3}
@@ -89,6 +93,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB9CE\uC740 \uAC78 \uCC0D\uC5C8\uC5C8\uB294\uB370,\n\uCE5C\uAD6C\uB4E4\uC744
         \uCC0D\uC5B4\uC904 \uB54C\uAC00 \uADF8\uB807\uAC8C \uC88B\uC558\uB358 \uAC70
@@ -122,6 +128,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC560\uB4E4\uC774 \uC6C3\uB294 \uC5BC\uAD74\uC774 \uBCF4\uAE30
         \uC88B\uC558\uC5B4."
@@ -154,6 +162,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB099\uC11C\uD560 \uB54C \uAF2D \uD544\uC694\uD588\uB358 \uBCFC\uD39C\uC774\uC5C8\uC5B4."
       textPos: {x: 0, y: -350}
@@ -185,6 +195,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uAD50\uACFC\uC11C \uD55C\uCF20\uC5D0 \uC791\uC740 \uCE90\uB9AD\uD130
         \uD558\uB098\uB97C \uADF8\uB9AC\uBA74\uC11C \uB2EC\uCE75 \uB2EC\uCE75 \uC18C\uB9AC\uB97C
@@ -218,6 +230,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB0B4\uAC00 \uAC00\uC7A5 \uC88B\uC544\uD558\uB358 \uC138\uC0C1\uC774
         \uC774 \uC791\uC740 \uAC8C\uC784\uAE30 \uC548\uC5D0 \uC788\uC5C8\uC5B4."
@@ -250,6 +264,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uBAA8\uB4E0 \uAC78 \uC78A\uACE0 \uBE60\uC838\uB4E4 \uC218 \uC788\uB294
         \uC138\uC0C1."
@@ -282,6 +298,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uBE75\uBCF4\uB2E4\uB294 \uB760\uBD80\uC530\uC774 \uB354 \uC911\uC694\uD588\uB358
         \uAC70 \uAC19\uC544.\n\uC568\uBC94\uC5D0 \uB760\uBD80\uC530\uC744 \uC5C4\uCCAD\uB098\uAC8C
@@ -315,6 +333,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uADF8\uB798\uB3C4 \uBE75\uB3C4 \uB9DB\uC788\uAC8C \uBA39\uC5C8\uC5C8\uC9C0."
       textPos: {x: 0, y: -350}
@@ -346,6 +366,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uCE60\uD310 \uB2F9\uBC88\uC77C \uB54C, \uAE00\uC528\uB97C \uD558\uB098\uD558\uB098
         \uAF3C\uAF3C\uD788 \uC9C0\uC6CC\uB0B4\uB824\uAC00\uB294 \uB9DB\uC774 \uC788\uC5C8\uC5B4."
@@ -378,6 +400,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uC774\uC81C \uB2E4\uC2DC\uB294 \uADF8 \uCE60\uD310\uC744 \uBABB
         \uBCF4\uACA0\uC9C0."
