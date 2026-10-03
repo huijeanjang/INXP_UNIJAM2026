@@ -64,6 +64,9 @@ namespace FlappyBird.Player
         public void ActivatePlayer()
         {
             _isPlayerActive = true;
+            ClearCachedInput();
+            // 시작 탭도 첫 날갯짓으로 예약해 Update 실행 순서에 따라 입력이 빠지지 않게 합니다.
+            _wasPressedInput = true;
 
             if (_rb == null)
             {

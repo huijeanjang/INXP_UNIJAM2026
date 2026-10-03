@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f076ab288dc748f3b43fb3dad5e726d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlappyBird.Components.BorderLine
+  gameFlowSource: {fileID: 0}
 --- !u!1 &5496876862965976173
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f076ab288dc748f3b43fb3dad5e726d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlappyBird.Components.BorderLine
+  gameFlowSource: {fileID: 0}
 --- !u!1 &7483742551287295149
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +364,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7821486377255866887}
     m_Modifications:
+    - target: {fileID: 636178402532761413, guid: 69ba0c6b1799d814ba9056ed6e56a6e6, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3245330867154776028, guid: 69ba0c6b1799d814ba9056ed6e56a6e6, type: 3}
       propertyPath: m_Name
       value: PlayerFlappyBird

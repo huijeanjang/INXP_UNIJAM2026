@@ -24,6 +24,7 @@ namespace FlappyBird
 
         private bool _isSpawning;
         private float _spawnIntervalDistance;
+        private float _spawnOffset;
 
         private float? _prevItemY;
         private Item _lastSpawnedItem;
@@ -94,7 +95,7 @@ namespace FlappyBird
             // 누적 이동 거리를 업데이트하고, 스폰 간격을 초과했는지 여부를 확인
             if (_spawnScheduler.TryConsume(movedDistanceThisFrame, _spawnIntervalDistance))
             {
-                SpawnObstaclePattern(config.PipeSpawnX, true);
+                SpawnObstaclePattern(config.PipeSpawnX + _spawnOffset, true);
             }
 
             _moverRegistry.CleanupInactiveMovers(); // 비활성화된 이동 오브젝트 정리
@@ -104,7 +105,8 @@ namespace FlappyBird
         /// 파이프와 아이템을 초기화하고, 스폰 패턴과 스폰 타이밍을 리셋합니다. preserveSpeed가 true로 설정되면, 현재 이동 속도를 유지한 채로 초기화합니다. false로 설정하면, 이동 속도가 config에 정의된 초기값으로 리셋됩니다.
         /// </summary>
         /// <param name="preserveSpeed"></param>
-        public void PreparePipes(bool preserveSpeed = false)
+        /// <param name="isFirstPlay">첫 플레이에서는 초기 배치와 이후 스폰 위치를 함께 오른쪽으로 미룹니다.</param>
+        public void PreparePipes(bool preserveSpeed = false, bool isFirstPlay = false)
         {
             if (config == null)
             {
@@ -113,6 +115,7 @@ namespace FlappyBird
             }
 
             // 스폰 관련 상태 초기화
+            _spawnOffset = isFirstPlay ? Mathf.Max(0f, config.InitialPipeSpawnOffset) : 0f;
             _prevItemY = null;
             _lastSpawnedItem = null;
             _consecutiveItemCount = 0;
@@ -190,7 +193,8 @@ namespace FlappyBird
             spawnPositions.Reverse();
             foreach (float x in spawnPositions)
             {
-                SpawnObstaclePattern(x, moveImmediately);
+                // 개수와 간격을 유지한 채 전체 배치를 이동해야 첫 장애물도 늦게 도착합니다.
+                SpawnObstaclePattern(x + _spawnOffset, moveImmediately);
             }
         }
 

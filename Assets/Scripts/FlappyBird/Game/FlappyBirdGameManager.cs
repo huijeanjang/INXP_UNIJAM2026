@@ -24,6 +24,7 @@ namespace FlappyBird.Game
         private readonly List<Item> _collectedItems = new List<Item>();
 
         private IGameStartInput _startInput;
+        private bool _hasStartedGame;
 
         private int Score { get; set; }
         public bool IsPlaying => _stateMachine.Is(FlappyBirdState.Playing);
@@ -55,7 +56,8 @@ namespace FlappyBird.Game
                 pipeSpawner.ClearPipes();
 
                 bool preserveSpeed = !(GameSceneManager.Instance != null && GameSceneManager.Instance.IsResetting);
-                pipeSpawner.PreparePipes(preserveSpeed);
+                bool isFirstPlay = !_hasStartedGame || !preserveSpeed;
+                pipeSpawner.PreparePipes(preserveSpeed, isFirstPlay);
             }
         }
 
@@ -102,6 +104,7 @@ namespace FlappyBird.Game
                 return;
             }
 
+            _hasStartedGame = true;
             player.ActivatePlayer();
             pipeSpawner.StartSpawning();
 

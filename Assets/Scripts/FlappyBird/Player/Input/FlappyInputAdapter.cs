@@ -23,7 +23,7 @@ namespace FlappyBird.Player.Input
             }
         }
 
-        // 누르고 있는 동안 상승 입력으로 처리
+        // 공통 인터페이스용 홀드 상태입니다. 탭 비행 모터에서는 사용하지 않습니다.
         public bool IsHolding => _globalInput != null && _globalInput.IsPressing;
         public bool WasPressedThisFrame => _globalInput != null && _globalInput.WasTappedThisFrame;
         public bool WasReleasedThisFrame => _globalInput != null && _globalInput.WasReleasedThisFrame;

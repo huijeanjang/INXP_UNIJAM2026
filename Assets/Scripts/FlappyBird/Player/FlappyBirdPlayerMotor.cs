@@ -5,8 +5,9 @@ using UnityEngine;
 namespace FlappyBird.Player
 {
     /// <summary>
-    /// 입력에 따라 플레이어 상승 힘과 속도 제한을 적용합니다.
+    /// 탭마다 일정한 상승 속도를 적용하고 중력으로 포물선 비행을 만듭니다.
     /// </summary>
+    [RequireComponent(typeof(Rigidbody2D))]
     public class FlappyBirdPlayerMotor : MonoBehaviour, IFlappyBirdPlayerMotor
     {
         [SerializeField] private FlappyBirdConfig flappyBirdConfig;
@@ -26,34 +27,15 @@ namespace FlappyBird.Player
         {
             if (!_initialized || flappyBirdConfig is null) return;
 
-            if (wasPressed) // 버튼이 처음 눌렸을 때
+            _rigidBody2D.gravityScale = flappyBirdConfig.FlapGravityScale;
+
+            // 기존 상승/낙하 속도에 힘을 누적하지 않아 연타와 낙하 중에도 같은 반응을 냅니다.
+            // 홀드와 릴리스는 비행에 영향을 주지 않습니다.
+            if (wasPressed)
             {
                 Vector2 velocity = _rigidBody2D.linearVelocity;
-                float startY = Mathf.Max(velocity.y, 0.0f);
-                _rigidBody2D.linearVelocity = new Vector2(velocity.x, startY);
-                _rigidBody2D.AddForce(Vector2.up * flappyBirdConfig.PressImpulse, ForceMode2D.Impulse);
-            }
-
-            if (isHolding) // 버튼이 눌린 상태
-            {
-                Vector2 force = Vector2.up * flappyBirdConfig.HoldForce;
-                _rigidBody2D.AddForce(force, ForceMode2D.Force);
-            }
-
-            if (wasReleased) // 버튼이 떼어졌을 때
-            {
-                Vector2 velocity = _rigidBody2D.linearVelocity;
-
-                if (velocity.y > 0.0f)
-                {
-                    velocity.y *= flappyBirdConfig.ReleaseUpVelocityMultiplier;
-                    _rigidBody2D.linearVelocity = velocity;
-                }
-
-                if (flappyBirdConfig.ReleaseDownImpulse > 0.0f)
-                {
-                    _rigidBody2D.AddForce(Vector2.down * flappyBirdConfig.ReleaseDownImpulse, ForceMode2D.Impulse);
-                }
+                velocity.y = flappyBirdConfig.FlapVelocity;
+                _rigidBody2D.linearVelocity = velocity;
             }
 
             Vector2 clampedVelocity = _rigidBody2D.linearVelocity;
