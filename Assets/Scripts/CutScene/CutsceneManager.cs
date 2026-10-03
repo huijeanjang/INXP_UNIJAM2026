@@ -42,16 +42,14 @@ public class CutsceneManager : MonoBehaviour
     private void PlayItemCutscene(int stageIndex)
     {
         itemCutsceneBG.SetActive(true); // 아이템 컷씬 배경 활성화
-        GameManager.Instance.soundManager.PlayBGM(itemCutsceneDatas[stageIndex].targetBGM);
-        CustomLog.Info("아이템 컷씬 스테이지: " + stageIndex + "재생 BGM: " + itemCutsceneDatas[stageIndex].targetBGM);
+        CustomLog.Info("아이템 컷씬 스테이지: " + stageIndex);
         player.Play(itemCutsceneDatas[stageIndex].frames, () => PlayStageCutscene(stageIndex));
     }
 
     public void PlayStageCutscene(int stageIndex)
     {
         itemCutsceneBG.SetActive(false); // 아이템 컷씬 배경 비활성화
-        GameManager.Instance.soundManager.PlayBGM(cutsceneDatas[stageIndex + 1].targetBGM);
-        CustomLog.Info("재생되는 컷: " + cutsceneDatas[stageIndex + 1].name + "재생 BGM: " + cutsceneDatas[stageIndex + 1].targetBGM);
+        CustomLog.Info("재생되는 컷: " + cutsceneDatas[stageIndex + 1].name);
 
         var data = cutsceneDatas[stageIndex + 1]; // stageIndex는 0부터 시작하므로 +1 (0번 컷씬은 인트로)
         player.Play(data.frames, EndCutscene); // 끝나면 콜백으로 End 호출

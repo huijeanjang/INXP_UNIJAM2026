@@ -69,6 +69,13 @@ public class CutscenePlayer : MonoBehaviour
         HideCursor();
         _seq?.Kill();
 
+        // BGM 변경 (체크된 프레임에서만)
+        if (frame.bgmChange != null && frame.bgmChange.changeBGM)
+        {
+            GameManager.Instance.soundManager.PlayBGM(frame.bgmChange.bgm);
+            CustomLog.Info($"BGM 변경 - index:{index} bgm:{frame.bgmChange.bgm}");
+        }
+
         // 아이템 이미지
         if (frame.itemImage != null && frame.itemImage.sprite != null)
         {

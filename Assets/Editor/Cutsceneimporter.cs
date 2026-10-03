@@ -51,15 +51,12 @@ public static class CutsceneImporter
             string id = cutscenesT.Get(row, "cutscene_id").Trim();
             if (string.IsNullOrEmpty(id)) continue;
             string path = cutscenesT.Get(row, "asset_path").Trim();
-            string bgm = cutscenesT.Get(row, "bgm").Trim();
 
             if (builders.ContainsKey(id)) { errors.Add($"[cutscenes] cutscene_id 중복: {id}"); continue; }
             if (string.IsNullOrEmpty(path)) { errors.Add($"[cutscenes] {id}: asset_path 비어 있음"); continue; }
 
             string soPath = Path.Combine(SoOutputDir, Path.GetFileName(path));
-            var b = new CutsceneBuilder { id = id, assetPath = soPath };
-            b.bgm = ParseEnum<SoundManager.BGM>(bgm, default, $"[cutscenes] {id} bgm", errors);
-            builders[id] = b;
+            builders[id] = new CutsceneBuilder { id = id, assetPath = soPath };
         }
         if (errors.Count > 0) { Abort(errors); return; }
 
@@ -72,6 +69,17 @@ public static class CutsceneImporter
 
             int frame = ParseInt(framesT.Get(row, "frame"), $"[frames] {id} frame", errors);
             var fb = b.Frame(frame);
+
+            // BGM 변경 (빈칸이면 변경 없음)
+            string bgm = framesT.Get(row, "bgm").Trim();
+            if (!string.IsNullOrEmpty(bgm))
+            {
+                fb.bgmChange = new BGMChangeData
+                {
+                    changeBGM = true,
+                    bgm = ParseEnum<SoundManager.BGM>(bgm, default, $"[frames] {id} f{frame} bgm", errors)
+                };
+            }
 
             string sprite = framesT.Get(row, "item_sprite").Trim();
             if (!string.IsNullOrEmpty(sprite))
@@ -152,7 +160,6 @@ public static class CutsceneImporter
                 created = true;
             }
 
-            data.targetBGM = b.bgm;
             data.frames = b.BuildFrames();
             EditorUtility.SetDirty(data);
 
@@ -173,7 +180,6 @@ public static class CutsceneImporter
     {
         public string id;
         public string assetPath;
-        public SoundManager.BGM bgm;
         private readonly SortedDictionary<int, FrameBuilder> _frames = new SortedDictionary<int, FrameBuilder>();
 
         public FrameBuilder Frame(int i)
@@ -202,6 +208,7 @@ public static class CutsceneImporter
             for (int i = 0; i < count; i++)
                 arr[i] = _frames.TryGetValue(i, out var f) ? f.Build() : new CutsceneFrame
                 {
+                    bgmChange = new BGMChangeData(),
                     itemImage = new ItemImageData(),
                     Texts = new List<TextData>(),
                     moveImages = new List<MoveImageData>()
@@ -213,6 +220,7 @@ public static class CutsceneImporter
     private class FrameBuilder
     {
         public readonly int index;
+        public BGMChangeData bgmChange;
         public ItemImageData item;
         private readonly SortedDictionary<int, TextData> _texts = new SortedDictionary<int, TextData>();
         private readonly SortedDictionary<int, MoveImageData> _moves = new SortedDictionary<int, MoveImageData>();
@@ -252,6 +260,7 @@ public static class CutsceneImporter
 
         public CutsceneFrame Build() => new CutsceneFrame
         {
+            bgmChange = bgmChange ?? new BGMChangeData(),
             itemImage = item ?? new ItemImageData(),
             Texts = _texts.Values.ToList(),
             moveImages = _moves.Values.ToList()

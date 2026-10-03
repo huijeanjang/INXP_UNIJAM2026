@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5568db52b4fea43afb3455241bff86dd, type: 3}
   m_Name: 04_Stage4_CutScene
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneData
-  targetBGM: 3
   frames:
-  - itemImage:
+  - bgmChange:
+      changeBGM: 1
+      bgm: 3
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0

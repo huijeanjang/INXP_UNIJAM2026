@@ -43,8 +43,18 @@ public class FaidInOut
     public float fadeOutDuration;
 }
 [System.Serializable]
+public class BGMChangeData
+{
+    [Header("BGM 변경 (필요없으면 changeBGM = false)")]
+    public bool changeBGM;
+    public SoundManager.BGM bgm;
+}
+[System.Serializable]
 public class CutsceneFrame
 {
+    [Header("BGM 변경 (이 프레임부터 재생할 BGM)")]
+    public BGMChangeData bgmChange;
+
     [Header("아이템 이미지")]
     public ItemImageData itemImage;
 

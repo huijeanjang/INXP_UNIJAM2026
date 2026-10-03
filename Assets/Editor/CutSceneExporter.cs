@@ -50,8 +50,8 @@ public static class CutsceneExporter
         var texts = new StringBuilder();
         var moves = new StringBuilder();
 
-        cutscenes.AppendLine("cutscene_id,kind,stage,bgm,asset_path");
-        frames.AppendLine("cutscene_id,frame,item_sprite,item_use_fade,item_fade_delay,item_fade_in,item_fade_out");
+        cutscenes.AppendLine("cutscene_id,kind,stage,asset_path");
+        frames.AppendLine("cutscene_id,frame,item_sprite,item_use_fade,item_fade_delay,item_fade_in,item_fade_out,bgm");
         texts.AppendLine("cutscene_id,frame,slot,dialogue,pos_x,pos_y,align,use_fade,fade_delay,fade_in,fade_out");
         moves.AppendLine("cutscene_id,frame,slot,sprite,size_x,size_y,start_x,start_y,end_x,end_y,duration,ease,use_fade,fade_delay,fade_in,fade_out");
 
@@ -61,12 +61,15 @@ public static class CutsceneExporter
             string kind = GuessKind(id);
             string stage = GuessStage(id);
 
-            cutscenes.AppendLine(Row(id, kind, stage, entry.data.targetBGM.ToString(), entry.path));
+            cutscenes.AppendLine(Row(id, kind, stage, entry.path));
 
             CutsceneFrame[] frameArr = entry.data.frames ?? Array.Empty<CutsceneFrame>();
             for (int fi = 0; fi < frameArr.Length; fi++)
             {
                 CutsceneFrame frame = frameArr[fi];
+
+                // --- BGM 변경 (변경 없는 프레임은 빈칸) ---
+                string bgm = frame.bgmChange != null && frame.bgmChange.changeBGM ? frame.bgmChange.bgm.ToString() : "";
 
                 // --- 아이템 이미지 (프레임당 0~1개, frames.csv 에 인라인) ---
                 ItemImageData item = frame.itemImage;
@@ -76,12 +79,13 @@ public static class CutsceneExporter
                         id, fi.ToString(),
                         SpriteToken(item.sprite),
                         B(item.fadeSettings.useFade), F(item.fadeSettings.startDelay),
-                        F(item.fadeSettings.fadeInDuration), F(item.fadeSettings.fadeOutDuration)));
+                        F(item.fadeSettings.fadeInDuration), F(item.fadeSettings.fadeOutDuration),
+                        bgm));
                 }
                 else
                 {
                     // 아이템이 없어도 프레임 존재는 한 줄로 보존 (item_sprite 빈칸)
-                    frames.AppendLine(Row(id, fi.ToString(), "", "", "", "", ""));
+                    frames.AppendLine(Row(id, fi.ToString(), "", "", "", "", "", bgm));
                 }
 
                 // --- 텍스트 ---
