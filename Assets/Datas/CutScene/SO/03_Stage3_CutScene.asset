@@ -45,7 +45,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -85,7 +88,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -126,7 +132,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -178,7 +187,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 3
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -208,7 +220,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -237,7 +252,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0

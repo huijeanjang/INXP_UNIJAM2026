@@ -6,7 +6,7 @@
 00_IntroCutScene,2,0,Assets/Resources/CutScene/Img_Cs_005.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 00_IntroCutScene,3,0,Assets/Resources/CutScene/Img_Cs_006.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 00_IntroCutScene,4,0,Assets/Resources/CutScene/Img_Cs_007.PNG,0,0,0,50,1200,100,1.5,InBack,FALSE,0,0,0
-01_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_006.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
+01_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_Present.PNG,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 01_ItemCutScene,1,0,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 01_ItemCutScene,1,1,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 01_ItemCutScene,2,0,Assets/Resources/CutScene/Img_Cs_Box_Open.png,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
@@ -24,7 +24,7 @@
 01_Stage1_CutScene,2,0,Assets/Resources/CutScene/Img_Cs_010.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 01_Stage1_CutScene,3,0,Assets/Resources/CutScene/Img_Cs_011.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 01_Stage1_CutScene,4,0,Assets/Resources/CutScene/Img_Cs_007.PNG,0,0,0,50,1200,100,1.5,InBack,FALSE,0,0,0
-02_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_006.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
+02_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_Present.PNG,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 02_ItemCutScene,1,0,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 02_ItemCutScene,1,1,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 02_ItemCutScene,2,0,Assets/Resources/CutScene/Img_Cs_Box_Open.png,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
@@ -48,7 +48,7 @@
 02_Stage2_CutScene,6,0,Assets/Resources/CutScene/Img_Cs_011.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 02_Stage2_CutScene,6,1,Assets/Resources/CutScene/Img_Cs_000.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 02_Stage2_CutScene,7,0,Assets/Resources/CutScene/Img_Cs_007.PNG,0,0,0,50,1200,100,1.5,InBack,FALSE,0,0,0
-03_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_006.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
+03_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_Present.PNG,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 03_ItemCutScene,1,0,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 03_ItemCutScene,1,1,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 03_ItemCutScene,2,0,Assets/Resources/CutScene/Img_Cs_Box_Open.png,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
@@ -71,7 +71,7 @@
 03_Stage3_CutScene,4,0,Assets/Resources/CutScene/Img_Cs_015.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 03_Stage3_CutScene,5,0,Assets/Resources/CutScene/Img_Cs_010.PNG,0,0,0,0,0,0,0,Unset,FALSE,0,0,0
 03_Stage3_CutScene,6,0,Assets/Resources/CutScene/Img_Cs_016.PNG,0,0,0,0,0,0,0,InBack,FALSE,0,0,0
-04_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_006.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
+04_ItemCutScene,0,0,Assets/Resources/CutScene/Img_Cs_Present.PNG,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 04_ItemCutScene,1,0,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 04_ItemCutScene,1,1,Assets/Resources/CutScene/Img_Cs_Box_Close.png,0,0,0,0,0,0,0,OutQuint,FALSE,0,0,0
 04_ItemCutScene,2,0,Assets/Resources/CutScene/Img_Cs_Box_Open.png,0,0,0,0,0,0,0,Unset,FALSE,0,0,0

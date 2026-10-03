@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePlayer
   itemImage: {fileID: 1035716089}
+  itemBG: {fileID: 1064694658}
   moveImagePool:
   - {fileID: 96528575}
   - {fileID: 820801772}

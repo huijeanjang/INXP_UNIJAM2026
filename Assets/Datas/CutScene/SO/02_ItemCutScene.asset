@@ -34,7 +34,7 @@ MonoBehaviour:
         fadeInDuration: 0.5
         fadeOutDuration: 0
     moveImages:
-    - sprite: {fileID: 21300000, guid: c9addc99d9a054351b4436e734a5ec7f, type: 3}
+    - sprite: {fileID: 21300000, guid: 720f4ec0ad0d641baa954d5c51227d0f, type: 3}
       size: {x: 0, y: 0}
       fadeSettings:
         useFade: 0
@@ -45,7 +45,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 15
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 0}
       fadeSettings:
         useFade: 0
@@ -76,7 +79,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 15
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: -3255715777231812358, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -106,7 +112,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: -3255715777231812358, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -135,7 +144,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 6864294376166760810, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -163,7 +175,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 6864294376166760810, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -193,7 +208,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 6840414222625991526, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -222,7 +240,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 6840414222625991526, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -251,7 +272,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 1508796947356264080, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -281,7 +305,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: 1508796947356264080, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -309,7 +336,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: -2692541628663853794, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0
@@ -338,7 +368,10 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - itemImage:
+  - bgmChange:
+      changeBGM: 0
+      bgm: 0
+    itemImage:
       sprite: {fileID: -2692541628663853794, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
         useFade: 0

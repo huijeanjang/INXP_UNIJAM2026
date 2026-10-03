@@ -23,6 +23,10 @@ public class ItemImageData
 {
     public Sprite sprite;
     public FaidInOut fadeSettings;
+
+    [Header("아이템 배경 위치 (필요없으면 useCustomBGPos = false → 씬 기본 위치)")]
+    public bool useCustomBGPos;
+    public Vector2 bgPos;
 }
 [System.Serializable]
 public class TextData

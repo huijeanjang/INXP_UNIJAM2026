@@ -51,7 +51,7 @@ public static class CutsceneExporter
         var moves = new StringBuilder();
 
         cutscenes.AppendLine("cutscene_id,kind,stage,asset_path");
-        frames.AppendLine("cutscene_id,frame,item_sprite,item_use_fade,item_fade_delay,item_fade_in,item_fade_out,bgm");
+        frames.AppendLine("cutscene_id,frame,item_sprite,item_use_fade,item_fade_delay,item_fade_in,item_fade_out,item_bg_x,item_bg_y,bgm");
         texts.AppendLine("cutscene_id,frame,slot,dialogue,pos_x,pos_y,align,use_fade,fade_delay,fade_in,fade_out");
         moves.AppendLine("cutscene_id,frame,slot,sprite,size_x,size_y,start_x,start_y,end_x,end_y,duration,ease,use_fade,fade_delay,fade_in,fade_out");
 
@@ -73,6 +73,11 @@ public static class CutsceneExporter
 
                 // --- 아이템 이미지 (프레임당 0~1개, frames.csv 에 인라인) ---
                 ItemImageData item = frame.itemImage;
+
+                // 아이템 배경 위치 (기본 위치면 빈칸)
+                bool customBG = item != null && item.useCustomBGPos;
+                string bgX = customBG ? F(item.bgPos.x) : "";
+                string bgY = customBG ? F(item.bgPos.y) : "";
                 if (item != null && item.sprite != null)
                 {
                     frames.AppendLine(Row(
@@ -80,12 +85,12 @@ public static class CutsceneExporter
                         SpriteToken(item.sprite),
                         B(item.fadeSettings.useFade), F(item.fadeSettings.startDelay),
                         F(item.fadeSettings.fadeInDuration), F(item.fadeSettings.fadeOutDuration),
-                        bgm));
+                        bgX, bgY, bgm));
                 }
                 else
                 {
                     // 아이템이 없어도 프레임 존재는 한 줄로 보존 (item_sprite 빈칸)
-                    frames.AppendLine(Row(id, fi.ToString(), "", "", "", "", "", bgm));
+                    frames.AppendLine(Row(id, fi.ToString(), "", "", "", "", "", bgX, bgY, bgm));
                 }
 
                 // --- 텍스트 ---

@@ -11,6 +11,7 @@ public class CutscenePlayer : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Image itemImage; // 아이템 이미지용 단일 Image 컴포넌트
+    [SerializeField] private RectTransform itemBG; // 아이템 컷씬 배경 (활성화는 CutsceneManager 담당)
     [SerializeField] private List<Image> moveImagePool;
     [SerializeField] private List<TMP_Text> dialogueTexts;
     [SerializeField] private Image cursorImage;
@@ -24,12 +25,15 @@ public class CutscenePlayer : MonoBehaviour
     private Sequence _seq;
     private Tween _cursorTween;
     private Tween _bounceTween;
+    private Vector2? _itemBGDefaultPos; // 씬에 배치된 ItemBG 기본 위치
 
     public void Play(CutsceneFrame[] frames, System.Action onComplete)
     {
         _frames = frames;
         _index = 0;
         _onComplete = onComplete;
+        if (itemBG != null && _itemBGDefaultPos == null)
+            _itemBGDefaultPos = itemBG.anchoredPosition;
         //_isPlaying = true;
         _isPlaying = false;
         gameObject.SetActive(true);
@@ -87,6 +91,14 @@ public class CutscenePlayer : MonoBehaviour
         else
         {
             itemImage.gameObject.SetActive(false);
+        }
+
+        // 아이템 배경 위치 (지정 안 하면 기본 위치로 복원)
+        if (itemBG != null && _itemBGDefaultPos.HasValue)
+        {
+            itemBG.anchoredPosition = frame.itemImage != null && frame.itemImage.useCustomBGPos
+                ? frame.itemImage.bgPos
+                : _itemBGDefaultPos.Value;
         }
 
         // 이미지 전부 비활성화

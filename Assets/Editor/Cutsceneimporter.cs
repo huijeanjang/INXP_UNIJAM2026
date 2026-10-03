@@ -82,13 +82,18 @@ public static class CutsceneImporter
             }
 
             string sprite = framesT.Get(row, "item_sprite").Trim();
-            if (!string.IsNullOrEmpty(sprite))
+            string bgX = framesT.Get(row, "item_bg_x").Trim();
+            string bgY = framesT.Get(row, "item_bg_y").Trim();
+            bool customBG = !string.IsNullOrEmpty(bgX) || !string.IsNullOrEmpty(bgY); // 빈칸이면 씬 기본 위치
+            if (!string.IsNullOrEmpty(sprite) || customBG)
             {
                 string ctx = $"[frames] {id} f{frame} item";
                 fb.item = new ItemImageData
                 {
-                    sprite = ResolveSprite(sprite, ctx, errors),
-                    fadeSettings = Fade(framesT, row, "item_use_fade", "item_fade_delay", "item_fade_in", "item_fade_out", ctx, errors)
+                    sprite = string.IsNullOrEmpty(sprite) ? null : ResolveSprite(sprite, ctx, errors),
+                    fadeSettings = Fade(framesT, row, "item_use_fade", "item_fade_delay", "item_fade_in", "item_fade_out", ctx, errors),
+                    useCustomBGPos = customBG,
+                    bgPos = customBG ? V2(bgX, bgY, $"{ctx} bg", errors) : Vector2.zero
                 };
             }
         }
