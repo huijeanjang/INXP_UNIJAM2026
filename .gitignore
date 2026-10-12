@@ -102,3 +102,6 @@ INXP_UNIJAM2026.slnx
 .vscode/settings.json
 .vscode/launch.json
 .vscode/extensions.json
+
+# macOS
+.DS_Store
