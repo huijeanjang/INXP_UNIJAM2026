@@ -11,12 +11,6 @@ TextureImporter:
   - first:
       213: 6061335204226345634
     second: Img_Cs_007_2
-  - first:
-      213: -1861070196176534832
-    second: Img_Cs_007_3
-  - first:
-      213: -4057359450519791005
-    second: Img_Cs_007_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,10 +135,10 @@ TextureImporter:
       name: Img_Cs_007_0
       rect:
         serializedVersion: 2
-        x: 1265
-        y: 865
-        width: 349
-        height: 205
+        x: 1300
+        y: 954
+        width: 7
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +157,10 @@ TextureImporter:
       name: Img_Cs_007_1
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 381
-        width: 739
-        height: 699
+        x: 1306
+        y: 863
+        width: 311
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +179,10 @@ TextureImporter:
       name: Img_Cs_007_2
       rect:
         serializedVersion: 2
-        x: 1396
-        y: 441
-        width: 16
-        height: 44
+        x: 1466
+        y: 474
+        width: 651
+        height: 606
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,50 +193,6 @@ TextureImporter:
       bones: []
       spriteID: 2aa2b7001403e1450800000000000000
       internalID: 6061335204226345634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Img_Cs_007_3
-      rect:
-        serializedVersion: 2
-        x: 1510
-        y: 277
-        width: 91
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0d2c4d654862c26e0800000000000000
-      internalID: -1861070196176534832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Img_Cs_007_4
-      rect:
-        serializedVersion: 2
-        x: 1740
-        y: 109
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 36a91b9931d51b7c0800000000000000
-      internalID: -4057359450519791005
       vertices: []
       indices: 
       edges: []
@@ -264,8 +214,6 @@ TextureImporter:
       Img_Cs_007_0: -1500416706356154211
       Img_Cs_007_1: 8661528753419134013
       Img_Cs_007_2: 6061335204226345634
-      Img_Cs_007_3: -1861070196176534832
-      Img_Cs_007_4: -4057359450519791005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

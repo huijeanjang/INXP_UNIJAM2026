@@ -129,10 +129,10 @@ TextureImporter:
       name: Img_Cs_011_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 519
         y: 0
-        width: 2257
-        height: 954
+        width: 1738
+        height: 912
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

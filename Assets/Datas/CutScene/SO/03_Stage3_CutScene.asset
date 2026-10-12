@@ -23,6 +23,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB300\uD559\uAD50 \uB4E4\uC5B4\uAC00\uC11C\uB3C4, \uB9CE\uC774
         \uD798\uB4E4\uC5C8\uC8E0."
@@ -55,6 +57,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB9DE\uC544.\n\uB098 \uC815\uB9D0 \uC5F4\uC2EC\uD788 \uB178\uB825\uD588\uB294\uB370,\n\uC544\uBB34\uAC83\uB3C4
         \uC774\uB8E8\uC9C0 \uBABB\uD588\uC5B4."
@@ -98,6 +102,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uACF5\uBAA8\uC804, \uB300\uC678\uD65C\uB3D9, \uD504\uB85C\uC81D\uD2B8\u2026\n\uC900\uBE44\uD55C
         \uAC83\uB9C8\uB2E4 \uBAA8\uB450 \uBB34\uC0B0\uB418\uACE0\n\uB098\uB294 \uAC00\uCE58
@@ -142,6 +148,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB300\uD559\uC5D0 \uAC00\uB3C4 \uB098\uB294 \uC5EC\uC804\uD788
         \uACE0\uD1B5 \uC18D\uC5D0\uC11C \uC0B4\uACE0 \uC788\uC5C8\uC5B4.\n\uBC88\uB4EF\uD558\uAC8C
@@ -197,6 +205,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uADF8\uB798\uB3C4, \uB3D9\uC544\uB9AC\uC5D0\uC11C \uAE30\uD0C0\uB97C
         \uCE60 \uB550\n\uC88B\uC558\uB358 \uAC70 \uAC19\uC544.\n\uB098\uB984, \uADF8\uB7AC\uB358
@@ -230,6 +240,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB2E4\uC74C \uC774\uC57C\uAE30\uB3C4, \uCC3E\uC544\uC640\uC904
         \uC218 \uC788\uC5B4?"
@@ -262,6 +274,8 @@ MonoBehaviour:
         startDelay: 0
         fadeInDuration: 0
         fadeOutDuration: 0
+      useCustomBGPos: 0
+      bgPos: {x: 0, y: 0}
     Texts:
     - dialogueText: "\uB124, \uB2F9\uC5F0\uD558\uC8E0!\n\uC138\uC0C1\uC5D0\uC11C
         \uC81C\uC77C \uBE60\uB974\uAC8C \uCC3E\uC544\uC62C\uAC8C\uC694!"
