@@ -91,8 +91,6 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] private float rankModeGameTimeLimit = 180f; // 랭크모드 게임 제한 시간
     public float RankModeGameTimeLimit => rankModeGameTimeLimit;
 
-    public IReadOnlyList<float> DeathTimeLog => deathTimeLog; // 죽은 시간 기록용 리스트(로그용)
-    private List<float> deathTimeLog = new List<float>();
 
     private enum GamePrefabState // 현재 게임 상태
     {
@@ -143,7 +141,6 @@ public class GameSceneManager : MonoBehaviour
         IsResetting = true;
         gameTimers.RemoveAll(timer => timer == null);
         CurrentScore = 0;
-        deathTimeLog = new List<float>();
         if (gameScore != null)
         {
             gameScore.text = CurrentScore.ToString();
@@ -510,7 +507,6 @@ public class GameSceneManager : MonoBehaviour
             EnsurePresentStartGateVisible();
 
             currentGameId = 0;
-            deathTimeLog.Add(currentTime); // 현재 남은 시간(죽은 시간)을 로그에 기록
 
             GameManager.Instance.soundManager.PlayBGM(GetPresentBgm());
         }

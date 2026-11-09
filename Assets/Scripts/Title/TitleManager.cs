@@ -28,9 +28,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private string lobbySceneName = "LobbyScene";
     [SerializeField] private string CutSceneName = "CutScene";
 
-    [Header("Prologue Manager")]
-    [SerializeField] private PrologueManager prologueManager;
-
     private bool _pendingOpenWriteNamePanel;
     private bool _pendingShowMainAfterLogin;
     private bool _pendingApplyUiAfterGoogleSignOut;
@@ -179,51 +176,7 @@ public class TitleManager : MonoBehaviour
             GameManager.Instance.nextSceneAfterCutscene = lobbySceneName; // 컷씬 이후 로비로 이동
             SceneLoader.Load(CutSceneName); // 컷씬 씬으로 이동
         }
-
-
-        /*
-                // 프롤로그 최초 1회 표시
-                if (prologueManager == null)
-                {
-                    StartGame();
-                    return;
-                }
-
-                bool shouldShowPrologue = prologueManager.ShowPrologueIfNeeded();
-
-                if (shouldShowPrologue)
-                {
-                    isWaitingForPrologue = true;
-
-                    // 프롤로그 완료 콜백 설정
-                    prologueManager.SetOnCompletedCallback(() =>
-                    {
-                        isWaitingForPrologue = false;
-                        StartGame();
-                    });
-
-                    // 프롤로그 패널이 비활성화될 때까지 대기
-                    StartCoroutine(WaitForPrologueComplete());
-                }
-                else
-                {
-                    StartGame();
-                }
-                */ // 구버전 프롤로그 주석처리
     }
-    /*
-        /// <summary>
-        /// 프롤로그 완료를 기다리는 코루틴
-        /// </summary>
-        private IEnumerator WaitForPrologueComplete()
-        {
-            // 프롤로그 패널이 비활성화될 때까지 대기
-            while (isWaitingForPrologue)
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
-        }
-    */
     /// <summary>
     /// 게임 시작
     /// </summary>

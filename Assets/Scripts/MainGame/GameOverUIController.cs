@@ -78,7 +78,7 @@ public class GameOverUIController : MonoBehaviour
         RankingButton.SetActive(false);
 
         // 스테이지별 최고점수 기록 업데이트
-        GameManager.Instance.UpdateStageHighScore(GameSceneManager.Instance.CurrentScore, GameSceneManager.Instance.DeathTimeLog);
+        GameManager.Instance.UpdateStageHighScore(GameSceneManager.Instance.CurrentScore);
 
         int maxScore = GameManager.Instance.GameData.stageHighScore[GameManager.Instance.currentStageNum];
         int clearScore = GameManager.Instance.GameData.stageClearCriteria[GameManager.Instance.currentStageNum];

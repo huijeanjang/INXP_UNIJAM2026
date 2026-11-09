@@ -15,16 +15,6 @@ public class HighScoreEntry
 }
 
 [Serializable]
-public class PlayLogEntry
-{
-    public int stageIndex;
-    public int score;
-    public string timestamp;
-
-    public List<float> deathTimes = new List<float>(); // 죽은 시간 목록
-}
-
-[Serializable]
 public class GameData
 {
     public const int SkinCount = 10; // 전체 스킨 개수(필요시 조정)
@@ -77,11 +67,6 @@ public class GameData
     /// 스테이지별 클리어 기준 저장용
     /// </summary>
     public List<int> stageClearCriteria;
-
-    /// <summary>
-    /// 플레이 로그 수집용 (리셋 후에도 유지)
-    /// </summary>
-    public List<PlayLogEntry> playLogs = new List<PlayLogEntry>();
 
     public GameData()
     {
