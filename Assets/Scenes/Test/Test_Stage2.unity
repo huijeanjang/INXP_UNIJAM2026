@@ -2068,7 +2068,7 @@ PrefabInstance:
     - target: {fileID: 7850128006329974191, guid: 6f3c13ea0d2fc4a529f2b680b9d923ef, type: 3}
       propertyPath: stageConfigurations.Array.data[1].presentUIPrefab
       value: 
-      objectReference: {fileID: 4635767831871025406, guid: a302813083ec4f2409fe01a41ec7b4b6, type: 3}
+      objectReference: {fileID: 5483335956251449250, guid: ec850b05b1b164a5ba64b4c60351b3ad, type: 3}
     - target: {fileID: 7850128006329974191, guid: 6f3c13ea0d2fc4a529f2b680b9d923ef, type: 3}
       propertyPath: stageConfigurations.Array.data[1].presentGamePrefab
       value: 
