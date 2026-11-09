@@ -682,7 +682,7 @@ PrefabInstance:
     - target: {fileID: 3315867084239917035, guid: 6b80ed92a2d9d07418430d0d8c054ad8, type: 3}
       propertyPath: popDestinationTarget
       value: 
-      objectReference: {fileID: 3445294093751038893}
+      objectReference: {fileID: 8363908012027840552}
     - target: {fileID: 3545350605078274358, guid: 6b80ed92a2d9d07418430d0d8c054ad8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1876,8 +1876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6816220634468404eb67125ddf583adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUIController
---- !u!224 &3445294093751038893 stripped
+--- !u!224 &8363908012027840552 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5466173175454062596, guid: ec850b05b1b164a5ba64b4c60351b3ad, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1159968507791401857, guid: ec850b05b1b164a5ba64b4c60351b3ad, type: 3}
   m_PrefabInstance: {fileID: 7209026274826480553}
   m_PrefabAsset: {fileID: 0}
