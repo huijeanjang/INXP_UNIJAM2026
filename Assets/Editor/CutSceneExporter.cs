@@ -125,12 +125,41 @@ public static class CutsceneExporter
             }
         }
 
+        var outputs = new Dictionary<string, string>
+        {
+            ["cutscenes.csv"] = cutscenes.ToString(),
+            ["frames.csv"] = frames.ToString(),
+            ["texts.csv"] = texts.ToString(),
+            ["move_images.csv"] = moves.ToString(),
+        };
+
+        // CSV 를 SO 보다 나중에 고쳤는데(아직 Import 안 함) Export 하면 그 수정이 조용히 사라짐 → 확인받기.
+        DateTime newestSo = datas.Max(x => File.GetLastWriteTimeUtc(x.path));
+        var newerCsv = outputs
+            .Where(kv =>
+            {
+                string p = Path.Combine(OutputDir, kv.Key);
+                return File.Exists(p)
+                    && File.GetLastWriteTimeUtc(p) > newestSo
+                    && NormalizeNewlines(File.ReadAllText(p, Encoding.UTF8)) != NormalizeNewlines(kv.Value);
+            })
+            .Select(kv => kv.Key)
+            .ToList();
+        if (newerCsv.Count > 0 && !EditorUtility.DisplayDialog(
+                "CSV 덮어쓰기 확인",
+                "SO 보다 나중에 수정된 CSV 가 있습니다 (아직 Import 하지 않은 변경일 수 있음):\n\n"
+                + string.Join("\n", newerCsv)
+                + "\n\nExport 하면 이 수정은 SO 값으로 덮어써집니다. 계속할까요?\n(CSV 수정을 반영하려면 Import CSV → SO 를 먼저 실행하세요.)",
+                "덮어쓰기", "취소"))
+        {
+            Debug.LogWarning("[CutsceneExporter] 취소: 수정된 CSV 를 덮어쓰지 않았습니다.");
+            return;
+        }
+
         Directory.CreateDirectory(OutputDir);
         var enc = new UTF8Encoding(true); // BOM: 엑셀 더블클릭 시 한글 깨짐 방지
-        File.WriteAllText(Path.Combine(OutputDir, "cutscenes.csv"), cutscenes.ToString(), enc);
-        File.WriteAllText(Path.Combine(OutputDir, "frames.csv"), frames.ToString(), enc);
-        File.WriteAllText(Path.Combine(OutputDir, "texts.csv"), texts.ToString(), enc);
-        File.WriteAllText(Path.Combine(OutputDir, "move_images.csv"), moves.ToString(), enc);
+        foreach (var kv in outputs)
+            File.WriteAllText(Path.Combine(OutputDir, kv.Key), kv.Value, enc);
 
         AssetDatabase.Refresh();
         Debug.Log($"[CutsceneExporter] \uc644\ub8cc: {datas.Count}\uac1c \ucef7\uc52c \u2192 {OutputDir}");
@@ -150,6 +179,8 @@ public static class CutsceneExporter
         if (s.IndexOf('"') >= 0) s = s.Replace("\"", "\"\"");
         return needQuote ? "\"" + s + "\"" : s;
     }
+
+    private static string NormalizeNewlines(string s) => (s ?? "").Replace("\r\n", "\n");
 
     private static string F(float v) => v.ToString(CultureInfo.InvariantCulture);
     private static string B(bool v) => v ? "TRUE" : "FALSE";

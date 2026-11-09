@@ -56,7 +56,7 @@
 03_Stage3_CutScene,1,,,,,,,,
 03_Stage3_CutScene,2,,,,,,,,
 03_Stage3_CutScene,3,,,,,,,,
-03_Stage3_CutScene,4,,,,,,,,
+03_Stage3_CutScene,4,,,,,,,,Cutscene
 03_Stage3_CutScene,5,,,,,,,,
 03_Stage3_CutScene,6,,,,,,,,
 04_ItemCutScene,0,,,,,,0,-460,Title
@@ -73,7 +73,7 @@
 04_Stage4_CutScene,1,,,,,,,,
 04_Stage4_CutScene,2,,,,,,,,
 04_Stage4_CutScene,3,,,,,,,,
-04_Stage4_CutScene,4,,,,,,,,
+04_Stage4_CutScene,4,,,,,,,,Cutscene
 04_Stage4_CutScene,5,,,,,,,,
 04_Stage4_CutScene,6,,,,,,,,
 04_Stage4_CutScene,7,,,,,,,,

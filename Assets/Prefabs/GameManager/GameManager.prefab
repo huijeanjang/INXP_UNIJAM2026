@@ -220,7 +220,9 @@ MonoBehaviour:
     highScores: []
     characterSkins: 00000000000000000000
     infiniteModeHighScore: 0
+    rankModeHighScore: -1
     stageUnlocked: 01000000
+    rankModeUnlocked: 0
     stageHighScore: ffffffffffffffffffffffffffffffff
     stageClearCriteria: 88130000881300008813000088130000
     playLogs: []
@@ -284,7 +286,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e7d00e692338e4230af20f5d9344b078, type: 3}
   - {fileID: 8300000, guid: 3bd75aa19e6ef43519cc65e195332e10, type: 3}
   - {fileID: 8300000, guid: 8cbe607844a1b40039d7136a68b2e1c6, type: 3}
-  - {fileID: 8300000, guid: 42a1a574e5693934fac28112d49eff55, type: 3}
+  - {fileID: 8300000, guid: df4a688b05a124f2ea44d46fc25ce841, type: 3}
+  - {fileID: 8300000, guid: a8551393c5f2e498780ec700760c1150, type: 3}
   sfxSounds:
   - {fileID: 8300000, guid: 8090e18ee9c9040b8a99116bbb30211f, type: 3}
   - {fileID: 8300000, guid: 7bda524ceb88149a79eb491dbe090305, type: 3}
