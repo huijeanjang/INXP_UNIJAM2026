@@ -266,7 +266,7 @@ MonoBehaviour:
   gameManager: {fileID: 2522226176134852873}
   fallingObjectPrefab: {fileID: 1026886225106694781, guid: 7709b0edbafaa4240a5bd44310b9e5b6, type: 3}
   groundReference: {fileID: 6065680760413591038}
-  poopSprite: {fileID: -1112353816456027912, guid: 9330723b1a20d964588208a1ec044e61, type: 3}
+  poopSprite: {fileID: -91991111961080754, guid: 44213d1faccb6cf45bf948a2fea72974, type: 3}
   config: {fileID: 11400000, guid: 2b4fbaa311c35864eb83ccf4f4a3c137, type: 2}
 --- !u!1 &8328509213626653498
 GameObject:
