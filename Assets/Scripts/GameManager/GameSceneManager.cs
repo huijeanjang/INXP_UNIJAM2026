@@ -516,7 +516,9 @@ public class GameSceneManager : MonoBehaviour
 
             if (GameManager.Instance != null && GameManager.Instance.IsRankMode)
             {
-                SwapRankModePastStage();
+                SetTransitionInputBlocked(true);
+                yield return SwapRankModePastStage();
+                SetTransitionInputBlocked(false);
             }
 
             SetPastObjectsActive(true);
@@ -636,17 +638,23 @@ public class GameSceneManager : MonoBehaviour
     /// <summary>
     /// 랭크모드에서 Present -> Past 전환 시 Past 프리팹을 다음 후보로 교체합니다 (Instantiate/Destroy 방식).
     /// </summary>
-    private void SwapRankModePastStage()
+    private IEnumerator SwapRankModePastStage()
     {
         if (_rankStagePicker == null)
         {
-            return;
+            yield break;
         }
 
         StageRuntimeConfiguration nextConfiguration = _rankStagePicker.Pick();
 
         DestroyRuntimeObject(_runtimePastGame);
         DestroyRuntimeObject(_runtimePastUI);
+        _runtimePastGame = null;
+        _runtimePastUI = null;
+
+        // Destroy completes at the end of the frame. Let old singleton owners
+        // finish OnDestroy before the replacement prefab runs Awake.
+        yield return null;
 
         _runtimePastGame = InstantiateStageObject(nextConfiguration?.pastGamePrefab, pastGameRoot, "PastGame");
         _runtimePastUI = InstantiateStageObject(nextConfiguration?.pastUIPrefab, pastUIRoot, "PastUI", optional: true);
