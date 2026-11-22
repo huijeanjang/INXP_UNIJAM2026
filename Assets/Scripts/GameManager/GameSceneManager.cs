@@ -645,6 +645,13 @@ public class GameSceneManager : MonoBehaviour
             yield break;
         }
 
+        // 게임 시작(ResetGame) 직후의 첫 전환은 InitializeStageObjects에서 이미 뽑아 생성해 둔 스테이지를 그대로 사용.
+        // 여기서 다시 뽑으면 플레이어가 보지 못한 픽이 연속 출현 기록에 남아 확률 조정이 어긋난다.
+        if (IsResetting && _runtimePastGame != null)
+        {
+            yield break;
+        }
+
         StageRuntimeConfiguration nextConfiguration = _rankStagePicker.Pick();
 
         DestroyRuntimeObject(_runtimePastGame);
