@@ -81,6 +81,7 @@ public class GameSceneManager : MonoBehaviour
     private GameObject _runtimePastGame;
     private GameObject _runtimePastUI;
     private RankModePastStagePicker _rankStagePicker;
+    private bool _hasUnshownPreparedRankStage; // 랭크모드: InitializeStageObjects에서 뽑은 스테이지를 아직 첫 전환에서 쓰지 않았는지
 
     public event System.Action OnGameChanged;
 
@@ -589,6 +590,7 @@ public class GameSceneManager : MonoBehaviour
     private void InitializeStageObjects()
     {
         bool isRankMode = GameManager.Instance != null && GameManager.Instance.IsRankMode;
+        _hasUnshownPreparedRankStage = false;
 
         if (isRankMode)
         {
@@ -633,6 +635,8 @@ public class GameSceneManager : MonoBehaviour
 
         InjectCanvasCamera(_runtimePastGame);
         InjectCanvasCamera(_runtimePastUI);
+
+        _hasUnshownPreparedRankStage = isRankMode && _runtimePastGame != null;
     }
 
     /// <summary>
@@ -645,11 +649,15 @@ public class GameSceneManager : MonoBehaviour
             yield break;
         }
 
-        // 게임 시작(ResetGame) 직후의 첫 전환은 InitializeStageObjects에서 이미 뽑아 생성해 둔 스테이지를 그대로 사용.
+        // InitializeStageObjects에서 이미 뽑아 생성해 둔 스테이지가 아직 한 번도 노출되지 않았다면 그대로 사용(1회 소비).
         // 여기서 다시 뽑으면 플레이어가 보지 못한 픽이 연속 출현 기록에 남아 확률 조정이 어긋난다.
-        if (IsResetting && _runtimePastGame != null)
+        if (_hasUnshownPreparedRankStage)
         {
-            yield break;
+            _hasUnshownPreparedRankStage = false;
+            if (_runtimePastGame != null)
+            {
+                yield break;
+            }
         }
 
         StageRuntimeConfiguration nextConfiguration = _rankStagePicker.Pick();
