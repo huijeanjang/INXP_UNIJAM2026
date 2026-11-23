@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ReViewManager : MonoBehaviour
 {
@@ -11,12 +12,21 @@ public class ReViewManager : MonoBehaviour
     [SerializeField] private string ReViewSceneName = "ReViewScene";
 
     [Header("Cutscene Buttons")]
-    [SerializeField] private Button[] cutSceneButtons;   // 버튼 6개
+    [SerializeField] private Button[] cutSceneButtons;   // 버튼 5개 (인트로 + 스테이지 4개)
+
+    [Header("Description Popup")]
+    [SerializeField] private GameObject descriptionPanel; // 설명 팝업 패널
+    [SerializeField] private TMP_Text summaryText;        // 스토리 요약 텍스트
+    [Tooltip("cutSceneButtons 와 같은 순서 (0: 인트로, 1~4: 스테이지 1~4)")]
+    [SerializeField, TextArea(3, 8)] private string[] summaries = new string[1 + GameData.StageCount];
+
+    private int _selectedStageIndex; // 팝업에서 "보기" 누르면 재생할 스테이지 번호
 
     void Start()
     {
         GameManager.Instance.soundManager.PlayBGM(SoundManager.BGM.Title);
         settigPanel.SetActive(false); // 설정 패널 초기화 - 숨김
+        descriptionPanel.SetActive(false); // 설명 팝업 초기화 - 숨김
 
         InitializeCutSceneButtons();
     }
@@ -36,42 +46,45 @@ public class ReViewManager : MonoBehaviour
     {
         var gameData = GameManager.Instance.GameData;
 
-        switch (buttonIndex)
-        {
-            case 0:
-                return true; // 인트로
+        if (buttonIndex == 0) return true; // 인트로
+        if (buttonIndex < 1 || buttonIndex > GameData.StageCount) return false;
 
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                // 이전 스테이지 하이스코어가 클리어 기준 이상이면 언락
-                int scoreIndex = buttonIndex - 1;
-                return gameData.stageHighScore[scoreIndex] >= gameData.stageClearCriteria[scoreIndex];
-
-            case 5:
-                // 막스테 클리어시 자동 언락
-                return IsButtonUnlocked(4);
-
-            default:
-                return false;
-        }
+        // 해당 스테이지 하이스코어가 클리어 기준 이상이면 언락
+        int scoreIndex = buttonIndex - 1;
+        return gameData.stageHighScore[scoreIndex] >= gameData.stageClearCriteria[scoreIndex];
     }
 
     public void onGoToCutScene(int stageIndex)
     {
         GameManager.Instance.soundManager.PlaySFX(SoundManager.SFX.ButtonClick);
 
-        if (IsButtonUnlocked(stageIndex + 1))
-        {
-            GameManager.Instance.currentStageNum = stageIndex;
-            GameManager.Instance.nextSceneAfterCutscene = ReViewSceneName;
-            SceneLoader.Load(CutSceneName);
-        }
-        else
+        int buttonIndex = stageIndex + 1;
+        if (!IsButtonUnlocked(buttonIndex))
         {
             Debug.Log("해금되지 않은 스테이지입니다.");
+            return;
         }
+
+        // 바로 이동하지 않고 설명 팝업을 띄움
+        _selectedStageIndex = stageIndex;
+        summaryText.text = buttonIndex < summaries.Length ? summaries[buttonIndex] : string.Empty;
+        descriptionPanel.SetActive(true);
+    }
+
+    // 설명 팝업의 "보기" 버튼 → 선택한 컷씬 재생
+    public void onPlaySelectedCutScene()
+    {
+        GameManager.Instance.soundManager.PlaySFX(SoundManager.SFX.ButtonClick);
+        GameManager.Instance.currentStageNum = _selectedStageIndex;
+        GameManager.Instance.nextSceneAfterCutscene = ReViewSceneName;
+        SceneLoader.Load(CutSceneName);
+    }
+
+    // 설명 팝업의 "닫기" 버튼
+    public void onCloseDescription()
+    {
+        GameManager.Instance.soundManager.PlaySFX(SoundManager.SFX.ButtonClick);
+        descriptionPanel.SetActive(false);
     }
 
     public void onGoToLobby()
