@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5568db52b4fea43afb3455241bff86dd, type: 3}
   m_Name: 04_Stage4_CutScene
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneData
+  targetBGM: 4
   frames:
-  - bgmChange:
-      changeBGM: 1
-      bgm: 3
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -47,9 +48,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -81,9 +82,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -115,9 +116,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -149,9 +150,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 1
-      bgm: 4
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -182,9 +183,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -215,9 +216,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -249,9 +250,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -284,9 +285,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:

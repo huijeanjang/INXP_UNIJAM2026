@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5568db52b4fea43afb3455241bff86dd, type: 3}
   m_Name: 04_ItemCutScene
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneData
+  targetBGM: 0
   frames:
-  - bgmChange:
-      changeBGM: 1
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -47,9 +48,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 15
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 0}
       fadeSettings:
@@ -83,9 +84,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 15
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 98436514128380136, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -118,9 +119,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: -4044392015667822215, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -151,9 +152,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: -4044392015667822215, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -185,9 +186,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 830771882072604510, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -219,9 +220,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: -1616999490942925289, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -253,9 +254,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: -1616999490942925289, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -288,9 +289,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 782354657509898748, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:
@@ -323,9 +324,9 @@ MonoBehaviour:
       endPos: {x: 0, y: 0}
       duration: 0
       ease: 0
-  - bgmChange:
-      changeBGM: 0
-      bgm: 0
+  - sfx:
+      playSFX: 0
+      sfx: 0
     itemImage:
       sprite: {fileID: 782354657509898748, guid: c881605aad54d854888b30a6d2c22ab4, type: 3}
       fadeSettings:

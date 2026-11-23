@@ -73,11 +73,11 @@ public class CutscenePlayer : MonoBehaviour
         HideCursor();
         _seq?.Kill();
 
-        // BGM 변경 (체크된 프레임에서만)
-        if (frame.bgmChange != null && frame.bgmChange.changeBGM)
+        // 효과음 (체크된 프레임에서만, BGM은 건드리지 않음)
+        if (frame.sfx != null && frame.sfx.playSFX)
         {
-            GameManager.Instance.soundManager.PlayBGM(frame.bgmChange.bgm);
-            CustomLog.Info($"BGM 변경 - index:{index} bgm:{frame.bgmChange.bgm}");
+            GameManager.Instance.soundManager.PlaySFX(frame.sfx.sfx);
+            CustomLog.Info($"효과음 재생 - index:{index} sfx:{frame.sfx.sfx}");
         }
 
         // 아이템 이미지
