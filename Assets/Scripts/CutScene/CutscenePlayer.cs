@@ -18,6 +18,9 @@ public class CutscenePlayer : MonoBehaviour
     [SerializeField] private Vector2 cursorOffset;
     [SerializeField] private float cursorStartDelay;
 
+    [Header("스킵 버튼 (현재 컷씬 하나를 통째로 건너뜀)")]
+    [SerializeField] private Button skipButton;
+
     private CutsceneFrame[] _frames;
     private int _index;
     private bool _isPlaying;
@@ -26,6 +29,13 @@ public class CutscenePlayer : MonoBehaviour
     private Tween _cursorTween;
     private Tween _bounceTween;
     private Vector2? _itemBGDefaultPos; // 씬에 배치된 ItemBG 기본 위치
+    private int _skipFrame = -1; // 스킵한 프레임 번호 (같은 프레임의 탭 입력 무시용)
+
+    private void Awake()
+    {
+        if (skipButton != null)
+            skipButton.onClick.AddListener(Skip);
+    }
 
     public void Play(CutsceneFrame[] frames, System.Action onComplete)
     {
@@ -43,8 +53,9 @@ public class CutscenePlayer : MonoBehaviour
     private void Update()
     {
         if (!_isPlaying) return;
+        if (Time.frameCount == _skipFrame) return; // 스킵 직후 같은 프레임 입력이 다음 컷씬으로 넘어가지 않게
 
-        if (UnifiedInputManager.Instance.WasTappedThisFrame)
+        if (UnifiedInputManager.Instance.WasTappedThisFrame && !IsPointerOverSkipButton())
             NextFrame();
         /*if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
             NextFrame();
@@ -279,6 +290,28 @@ public class CutscenePlayer : MonoBehaviour
         if (cursorImage != null) cursorImage.gameObject.SetActive(false);
     }
 
+    // 스킵 버튼: 현재 컷씬을 즉시 종료 → onComplete 콜백으로 다음 컷씬(있으면) 재생, 없으면 컷씬 종료
+    public void Skip()
+    {
+        if (_frames == null || !gameObject.activeInHierarchy) return; // 이미 끝났거나 재생 중이 아니면 무시 (중복 클릭 방지)
+
+        GameManager.Instance.soundManager.PlaySFX(SoundManager.SFX.ButtonClick);
+        CustomLog.Info($"컷씬 스킵 - index:{_index}");
+        _skipFrame = Time.frameCount;
+        EndCutscene();
+    }
+
+    // 스킵 버튼을 누르는 탭이 대사 넘기기로도 처리되지 않게 체크
+    private bool IsPointerOverSkipButton()
+    {
+        if (skipButton == null || !skipButton.gameObject.activeInHierarchy) return false;
+
+        var canvas = skipButton.GetComponentInParent<Canvas>();
+        Camera cam = canvas == null || canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+        return RectTransformUtility.RectangleContainsScreenPoint(
+            (RectTransform)skipButton.transform, UnifiedInputManager.Instance.PointerPosition, cam);
+    }
+
     private void EndCutscene()
     {
         _isPlaying = false;
@@ -286,7 +319,11 @@ public class CutscenePlayer : MonoBehaviour
         _seq?.Kill();
         foreach (var img in moveImagePool)
             img.gameObject.SetActive(false);
+        _frames = null; // 종료 상태 표시 (Skip 중복 호출 방지)
         gameObject.SetActive(false);
-        _onComplete?.Invoke();
+
+        var onComplete = _onComplete;
+        _onComplete = null; // 콜백은 한 번만 호출
+        onComplete?.Invoke(); // 다음 컷씬이 있으면 여기서 Play()가 다시 호출됨
     }
 }
