@@ -7,6 +7,13 @@ public class GameOverUIController : MonoBehaviour
     public TextMeshProUGUI alarm; // 기록 저장 여부 등 출력
     public GameObject DashboardPanel; // 대시보드 패널
 
+    [Header("Star Rating")]
+    [SerializeField] private StarRatingView starRating; // 별 표시 (스테이지 모드 전용)
+
+    [Header("Alarm Texts")]
+    [SerializeField] private string clearAlarmText = "과거에서 선물을 잔뜩 모았어요!"; // 클리어(1별 이상)
+    [SerializeField] private string failAlarmText = "실패 텍스트(임시)";              // 클리어 실패
+
     [Header("Scene Names")]
     [SerializeField] private string CutSceneName = "CutScene";
     [SerializeField] private string LobbySceneName = "LobbyScene";
@@ -63,6 +70,7 @@ public class GameOverUIController : MonoBehaviour
         {
             gameResult.text = myScore.ToString();
             alarm.text = "";
+            if (starRating != null) starRating.gameObject.SetActive(false); // 랭크모드는 별 없음
 
             GameManager.Instance.UpdateRankModeScore(myScore);
 
@@ -80,72 +88,61 @@ public class GameOverUIController : MonoBehaviour
         // 스테이지별 최고점수 기록 업데이트
         GameManager.Instance.UpdateStageHighScore(GameSceneManager.Instance.CurrentScore);
 
-        int maxScore = GameManager.Instance.GameData.stageHighScore[GameManager.Instance.currentStageNum];
-        int clearScore = GameManager.Instance.GameData.stageClearCriteria[GameManager.Instance.currentStageNum];
+        int stageIndex = GameManager.Instance.currentStageNum;
+        int maxScore = GameManager.Instance.GameData.stageHighScore[stageIndex];
+        int starCount = GameManager.Instance.GetStarCount(stageIndex, myScore);
+        bool isCleared = starCount >= 1; // 1별 = 클리어
 
-        //점수 출력
+        // 점수 출력
         gameResult.text = myScore.ToString();
-        CustomLog.Info("점수 출력");
+        CustomLog.Info($"점수 출력 - score:{myScore} stars:{starCount}");
 
-        int nextStage = GameManager.Instance.currentStageNum + 1;
-
-
-        // 점수, 스테이지 클리어 여부 별 알람 메시지 출력
-
-        // 클리어 점수 달성 + 다음 스테이지 있음 + 다음 스테이지 미해금 => 다음 스테이지 해금
-        if (myScore >= clearScore
-            && nextStage < GameData.StageCount
-            && !GameManager.Instance.GameData.stageUnlocked[nextStage])
+        // 별 출력
+        if (starRating != null)
         {
-            alarm.text = "다음 스테이지가 해금되었습니다!";
-            GameManager.Instance.UnlockNextStage(); //다음 스테이지 해금
-
-            CustomLog.Info($"스테이지 {nextStage}이 해금되었습니다.");
-
-            GiveButton.SetActive(true); // 선물하러 가기 버튼 활성화
-            RestartButton.SetActive(false); // 다시하기 버튼 비활성화
-            LobbyButton.SetActive(false); // 로비 버튼 비활성화
-
-            //게임 종료 직후 스테이지 하이스코어를 뒤끝 랭킹에 반영
-            BackendRank.Instance.RankInsertCurrentStageHighScore();
+            starRating.gameObject.SetActive(true);
+            starRating.SetStars(starCount);
         }
-        // 클리어 점수 달성 + 다음 스테이지 없음 + 랭크모드 미해금 => 랭킹모드 해금
-        else if (myScore >= clearScore && nextStage >= GameData.StageCount && !GameManager.Instance.GameData.rankModeUnlocked)
-        {
-            alarm.text = "모든 스테이지를 클리어했습니다!";
-            CustomLog.Info("모든 스테이지 클리어, 랭크 모드 해금");
 
-            GameManager.Instance.UnlockRankMode();
+        // 알람 텍스트 (클리어 여부만)
+        alarm.text = isCleared ? clearAlarmText : failAlarmText;
 
-            GiveButton.SetActive(true); // 선물하러 가기 버튼 활성화
-            RestartButton.SetActive(false); // 다시하기 버튼 비활성화
-            LobbyButton.SetActive(false); // 로비 버튼 비활성화
-
-            //게임 종료 직후 스테이지 하이스코어를 뒤끝 랭킹에 반영
-            BackendRank.Instance.RankInsertCurrentStageHighScore();
-        }
-        // 클리어 점수 미달 => 단순 실패
-        else if (myScore < clearScore)
+        if (!isCleared)
         {
             CustomLog.Info("실패");
-            alarm.text = "실패";
+            return;
         }
-        // 스테이지 클리어 + 신기록
-        else if (myScore >= maxScore)
-        {
-            CustomLog.Info("신기록!");
-            alarm.text = "신기록!";
 
-            //게임 종료 직후 스테이지 하이스코어를 뒤끝 랭킹에 반영
+        int nextStage = stageIndex + 1;
+
+        // 클리어 + 다음 스테이지 있음 + 다음 스테이지 미해금 => 다음 스테이지 해금
+        if (nextStage < GameData.StageCount && !GameManager.Instance.GameData.stageUnlocked[nextStage])
+        {
+            GameManager.Instance.UnlockNextStage(); //다음 스테이지 해금
+            CustomLog.Info($"스테이지 {nextStage}이 해금되었습니다.");
+            ShowGiveButton();
+        }
+        // 클리어 + 다음 스테이지 없음 + 랭크모드 미해금 => 랭킹모드 해금
+        else if (nextStage >= GameData.StageCount && !GameManager.Instance.GameData.rankModeUnlocked)
+        {
+            GameManager.Instance.UnlockRankMode();
+            CustomLog.Info("모든 스테이지 클리어, 랭크 모드 해금");
+            ShowGiveButton();
+        }
+
+        // 클리어 + 최고 점수 갱신(또는 동점) => 뒤끝 랭킹에 반영
+        if (myScore >= maxScore)
+        {
             BackendRank.Instance.RankInsertCurrentStageHighScore();
         }
-        // 스테이지 클리어 + 신기록 아님
-        else
-        {
-            CustomLog.Info("스테이지 클리어 후 재도전, 신기록 아님");
-            alarm.text = "";
-        }
+    }
 
+    // 첫 클리어 시: 선물하러 가기 버튼만 표시
+    private void ShowGiveButton()
+    {
+        GiveButton.SetActive(true); // 선물하러 가기 버튼 활성화
+        RestartButton.SetActive(false); // 다시하기 버튼 비활성화
+        LobbyButton.SetActive(false); // 로비 버튼 비활성화
     }
 
     public void OnGiveButton() // 선물하러 가기 버튼 클릭

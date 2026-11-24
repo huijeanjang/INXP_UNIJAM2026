@@ -17,8 +17,6 @@ public class LobbyController : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI stageDescriptionText; // 스테이지 설명 텍스트
     // [SerializeField] private Button stageSelectButton; // 스테이지 선택 버튼
 
-    [Header("Stage Data")]
-    [SerializeField] private List<LobbyStageData> stageDatas; // 스테이지 데이터 배열
     [Header("Scene Names")]
     [SerializeField] private string titleSceneName = "Title";
     [SerializeField] private string gameSceneName = "MainScene";
@@ -35,8 +33,9 @@ public class LobbyController : MonoBehaviour
         nowStageIndex = stageIndex;
         stageSelectPanel.SetActive(true); // 스테이지 선택 패널 활성화
 
-        stageNameText.text = stageDatas[stageIndex].StageName; // 스테이지 이름 표시
-        stageCriteriaText.text = $"목표 점수  {stageDatas[stageIndex].normalStageCriteria}"; // 스테이지 달성 기준 표시
+        LobbyStageData stageData = GameManager.Instance.GetStageData(stageIndex);
+        stageNameText.text = stageData.StageName; // 스테이지 이름 표시
+        stageCriteriaText.text = $"목표 점수  {stageData.ClearScore}점"; // 스테이지 달성 기준 표시 (1별 = 클리어)
 
         if (GameManager.Instance.GameData.stageHighScore[stageIndex] == -1)
         {
@@ -47,7 +46,7 @@ public class LobbyController : MonoBehaviour
             stageHighScoreText.text = $"최고 점수  {GameManager.Instance.GameData.stageHighScore[stageIndex]}점"; // 스테이지 최고 점수 표시
         }
 
-        stageDescriptionText.text = stageDatas[stageIndex].stageDescription; // 스테이지 설명 표시
+        stageDescriptionText.text = stageData.stageDescription; // 스테이지 설명 표시
     }
     public void onStartStageButton()
     {

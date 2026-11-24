@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 325224f1ff3284414a55579b654b6fec, type: 3}
-  m_Name: 1_Stage
+  m_Name: 3_Stage
   m_EditorClassIdentifier: Assembly-CSharp::LobbyStageData
-  StageID: 1
-  StageName: "\uD559\uCC3D\uC2DC\uC808\uC758 \uCD94\uC5B5"
-  StageThumbnail: {fileID: 0}
-  normalStageCriteria: "5000\uC810"
-  hardStageCriteria: "25000\uC810"
-  stageDescription: "\uC774\uBC88\uC5D0\uC57C\uB9D0\uB85C \uD589\uBCF5\uD55C \uCD94\uC5B5\uC744
-    \uCC3E\uC544\uC640\uC57C\uB9CC \uD574!"
+  StageID: 3
+  StageName: "\uC9C1\uC7A5\uC778\uC758 \uCD94\uC5B5"
+  stageDescription: "\uC11C\uB458\uB7EC! \uC774\uC57C\uAE30\uB97C \uC5BC\uB978 \uCC3E\uC544\uC11C
+    \uB3CC\uC544\uC62C \uAC70\uC57C!"
+  starScores:
+  - 5000
+  - 7500
+  - 10000

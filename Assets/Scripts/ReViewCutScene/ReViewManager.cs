@@ -44,14 +44,10 @@ public class ReViewManager : MonoBehaviour
 
     private bool IsButtonUnlocked(int buttonIndex)
     {
-        var gameData = GameManager.Instance.GameData;
-
         if (buttonIndex == 0) return true; // 인트로
-        if (buttonIndex < 1 || buttonIndex > GameData.StageCount) return false;
 
-        // 해당 스테이지 하이스코어가 클리어 기준 이상이면 언락
-        int scoreIndex = buttonIndex - 1;
-        return gameData.stageHighScore[scoreIndex] >= gameData.stageClearCriteria[scoreIndex];
+        // 해당 스테이지를 클리어(1별 이상)했으면 언락
+        return GameManager.Instance.IsStageCleared(buttonIndex - 1);
     }
 
     public void onGoToCutScene(int stageIndex)

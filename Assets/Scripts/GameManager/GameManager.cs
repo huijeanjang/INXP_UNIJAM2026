@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameData gamedata = new GameData();    // GameData (세이브 필요한 데이터)
     [SerializeField] private List<StageRuntimeConfiguration> stageConfigurations = new List<StageRuntimeConfiguration>();
+    [SerializeField] private List<LobbyStageData> stageDatas = new List<LobbyStageData>(); // 스테이지 정보 + 별 기준 점수 (인덱스 = 스테이지 번호)
     public GameData GameData => gamedata;
 
     public SoundManager soundManager { get; private set; }
@@ -260,17 +261,48 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 스테이지 클리어 여부 
+    /// 스테이지 데이터(SO) 반환. 범위 밖이거나 연결 안 되어 있으면 null
+    /// </summary>
+    public LobbyStageData GetStageData(int stageIndex)
+    {
+        if (stageIndex < 0 || stageIndex >= stageDatas.Count) return null;
+        return stageDatas[stageIndex];
+    }
+
+    /// <summary>
+    /// 스테이지 클리어 기준 점수 (= 1별 점수). 데이터 없으면 int.MaxValue (클리어 불가)
+    /// </summary>
+    public int GetClearScore(int stageIndex)
+    {
+        LobbyStageData data = GetStageData(stageIndex);
+        if (data == null)
+        {
+            Debug.LogError($"[GameManager] 스테이지 {stageIndex} 데이터가 연결되지 않았습니다.");
+            return int.MaxValue;
+        }
+        return data.ClearScore;
+    }
+
+    /// <summary>
+    /// 점수에 해당하는 별 개수 (0 = 미클리어, 최대 3)
+    /// </summary>
+    public int GetStarCount(int stageIndex, int score)
+    {
+        LobbyStageData data = GetStageData(stageIndex);
+        return data != null ? data.GetStarCount(score) : 0;
+    }
+
+    /// <summary>
+    /// 스테이지 클리어 여부 (최고 점수 기준)
     /// </summary>
     public bool IsStageCleared(int stageIndex)
     {
         if (stageIndex < 0 || stageIndex >= GameData.StageCount) return false;
-        if (gamedata.stageHighScore == null || gamedata.stageClearCriteria == null) return false;
-        if (stageIndex >= gamedata.stageHighScore.Count || stageIndex >= gamedata.stageClearCriteria.Count) return false;
+        if (gamedata.stageHighScore == null || stageIndex >= gamedata.stageHighScore.Count) return false;
 
         int highScore = gamedata.stageHighScore[stageIndex];
         if (highScore < 0) return false;
 
-        return highScore >= gamedata.stageClearCriteria[stageIndex];
+        return GetStarCount(stageIndex, highScore) >= 1;
     }
 }

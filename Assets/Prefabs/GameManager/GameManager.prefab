@@ -224,8 +224,12 @@ MonoBehaviour:
     stageUnlocked: 01000000
     rankModeUnlocked: 0
     stageHighScore: ffffffffffffffffffffffffffffffff
-    stageClearCriteria: 88130000881300008813000088130000
     playLogs: []
+  stageDatas:
+  - {fileID: 11400000, guid: 856c78647419048f2a79624489a9e11e, type: 2}
+  - {fileID: 11400000, guid: 34a6cd72a3275416fa7e5bb2f1dd97ae, type: 2}
+  - {fileID: 11400000, guid: 5341c34a490a34ce89ab9855c9db9d78, type: 2}
+  - {fileID: 11400000, guid: 003518beaa0ca4b6fb46dc090f21d596, type: 2}
   stageConfigurations:
   - stageIndex: 0
     presentGamePrefab: {fileID: 3197806630729347418, guid: 6b80ed92a2d9d07418430d0d8c054ad8, type: 3}

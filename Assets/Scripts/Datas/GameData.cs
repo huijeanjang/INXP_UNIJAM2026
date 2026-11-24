@@ -63,11 +63,6 @@ public class GameData
     /// </summary>
     public List<int> stageHighScore;
 
-    /// <summary>
-    /// 스테이지별 클리어 기준 저장용
-    /// </summary>
-    public List<int> stageClearCriteria;
-
     public GameData()
     {
         characterSkins = new List<bool>(new bool[SkinCount]);
@@ -82,13 +77,6 @@ public class GameData
         {
             stageHighScore[i] = -1;
         }
-
-        stageClearCriteria = new List<int>(new int[StageCount]);
-
-        stageClearCriteria[0] = 5000; // 스테이지 1 클리어 기준 5000점
-        stageClearCriteria[1] = 5000; // 스테이지 2 클리어 기준 5000점
-        stageClearCriteria[2] = 5000; // 스테이지 3 클리어 기준 5000점
-        stageClearCriteria[3] = 5000; // 스테이지 4 클리어 기준 5000점
     }
 }
 

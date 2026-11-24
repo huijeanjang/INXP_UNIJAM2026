@@ -59,7 +59,7 @@ public class GameSceneManager : MonoBehaviour
 
     private bool isGameOver = false; // 게임 오버 여부
     public bool IsGameOver => isGameOver;
-    // 목표 점수 달성 후 연출이 끝날 때까지 클리어 UI를 미룸
+    // 시간 종료 후 점수 연출(연쇄 등)이 끝날 때까지 결과 UI를 미룸
     private bool _isClearPending;
     public bool IsClearPending => _isClearPending;
     private int _scorePresentationLocks;
@@ -239,7 +239,9 @@ public class GameSceneManager : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
-            TriggerGameOver();
+            // 시간 종료 → 진행 중인 점수 연출이 끝난 뒤 게임 종료 (최종 점수로 별 계산)
+            _isClearPending = true;
+            TryFinishPendingClear();
         }
 
     }
@@ -295,8 +297,6 @@ public class GameSceneManager : MonoBehaviour
             // Counter가 연결 안 되어 있으면 그냥 텍스트 갱신
             gameScore.text = CurrentScore.ToString("N0");
         }
-
-        TryClearByTargetScore();
     }
 
     // 자동 pop/매치 연쇄 연출이 시작됨
@@ -314,25 +314,6 @@ public class GameSceneManager : MonoBehaviour
         }
 
         TryFinishPendingClear();
-    }
-
-    // 목표 점수 달성 시 클리어를 예약하고, 연출이 없으면 즉시 종료
-    private void TryClearByTargetScore()
-    {
-        if (isGameOver || _isClearPending) return;
-        if (GameManager.Instance == null || GameManager.Instance.IsRankMode) return;
-
-        int stageIndex = GameManager.Instance.currentStageNum;
-        List<int> criteria = GameManager.Instance.GameData != null
-            ? GameManager.Instance.GameData.stageClearCriteria
-            : null;
-        if (criteria == null || stageIndex < 0 || stageIndex >= criteria.Count) return;
-
-        if (CurrentScore >= criteria[stageIndex])
-        {
-            _isClearPending = true;
-            TryFinishPendingClear();
-        }
     }
 
     private void TryFinishPendingClear()

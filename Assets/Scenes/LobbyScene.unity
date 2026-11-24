@@ -2933,11 +2933,6 @@ MonoBehaviour:
   stageCriteriaText: {fileID: 967940271}
   stageHighScoreText: {fileID: 888339520}
   stageDescriptionText: {fileID: 1958501630}
-  stageDatas:
-  - {fileID: 11400000, guid: 856c78647419048f2a79624489a9e11e, type: 2}
-  - {fileID: 11400000, guid: 34a6cd72a3275416fa7e5bb2f1dd97ae, type: 2}
-  - {fileID: 11400000, guid: 5341c34a490a34ce89ab9855c9db9d78, type: 2}
-  - {fileID: 11400000, guid: 003518beaa0ca4b6fb46dc090f21d596, type: 2}
   titleSceneName: Title
   gameSceneName: MainScene
 --- !u!1 &844344911
