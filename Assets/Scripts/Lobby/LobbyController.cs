@@ -12,9 +12,9 @@ public class LobbyController : MonoBehaviour
     [SerializeField] private GameObject settigPanel; // 설정 패널
 
     [SerializeField] private TMPro.TextMeshProUGUI stageNameText; // 스테이지 이름 텍스트
-    [SerializeField] private TMPro.TextMeshProUGUI stageCriteriaText; // 스테이지 달성 기준 텍스트
     [SerializeField] private TMPro.TextMeshProUGUI stageHighScoreText; // 스테이지 최고 점수 텍스트
     [SerializeField] private TMPro.TextMeshProUGUI stageDescriptionText; // 스테이지 설명 텍스트
+    [SerializeField] private StarRatingView stageStars; // 최고 점수 기준 별 표시
     // [SerializeField] private Button stageSelectButton; // 스테이지 선택 버튼
 
     [Header("Scene Names")]
@@ -35,16 +35,13 @@ public class LobbyController : MonoBehaviour
 
         LobbyStageData stageData = GameManager.Instance.GetStageData(stageIndex);
         stageNameText.text = stageData.StageName; // 스테이지 이름 표시
-        stageCriteriaText.text = $"목표 점수  {stageData.ClearScore}점"; // 스테이지 달성 기준 표시 (1별 = 클리어)
 
-        if (GameManager.Instance.GameData.stageHighScore[stageIndex] == -1)
-        {
-            stageHighScoreText.text = $"최고 점수  0점"; // 첫플레이
-        }
-        else
-        {
-            stageHighScoreText.text = $"최고 점수  {GameManager.Instance.GameData.stageHighScore[stageIndex]}점"; // 스테이지 최고 점수 표시
-        }
+        int highScore = Mathf.Max(0, GameManager.Instance.GameData.stageHighScore[stageIndex]); // -1(첫플레이) → 0
+        stageHighScoreText.text = $"최고 점수  {highScore}점"; // 스테이지 최고 점수 표시
+
+        // 최고 점수 기준 별 + 기준 점수 표시 (로비는 연출 없이 즉시)
+        if (stageStars != null)
+            stageStars.Show(stageData, highScore, animate: false);
 
         stageDescriptionText.text = stageData.stageDescription; // 스테이지 설명 표시
     }

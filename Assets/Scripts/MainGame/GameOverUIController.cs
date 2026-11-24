@@ -90,6 +90,7 @@ public class GameOverUIController : MonoBehaviour
 
         int stageIndex = GameManager.Instance.currentStageNum;
         int maxScore = GameManager.Instance.GameData.stageHighScore[stageIndex];
+        LobbyStageData stageData = GameManager.Instance.GetStageData(stageIndex);
         int starCount = GameManager.Instance.GetStarCount(stageIndex, myScore);
         bool isCleared = starCount >= 1; // 1별 = 클리어
 
@@ -97,11 +98,11 @@ public class GameOverUIController : MonoBehaviour
         gameResult.text = myScore.ToString();
         CustomLog.Info($"점수 출력 - score:{myScore} stars:{starCount}");
 
-        // 별 출력
+        // 별 + 기준 점수 출력 (등장 연출 O)
         if (starRating != null)
         {
             starRating.gameObject.SetActive(true);
-            starRating.SetStars(starCount);
+            starRating.Show(stageData, myScore, animate: true);
         }
 
         // 알람 텍스트 (클리어 여부만)
