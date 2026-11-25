@@ -11184,7 +11184,7 @@ PrefabInstance:
     - target: {fileID: 2078683325347296384, guid: 297c6e28c86154477b8abaaf72018653, type: 3}
       propertyPath: starRating
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4864244953002612453}
     - target: {fileID: 2078683325347296384, guid: 297c6e28c86154477b8abaaf72018653, type: 3}
       propertyPath: RankingButton
       value: 
@@ -12262,3 +12262,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2053987164435684865, guid: 6d658f40508974d1ca11998c602e59c0, type: 3}
   m_PrefabInstance: {fileID: 2913001177331795250}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4864244953002612453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7776672159356490711, guid: 6d658f40508974d1ca11998c602e59c0, type: 3}
+  m_PrefabInstance: {fileID: 2913001177331795250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a134f52933e246db986eec575ba7a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarRatingView
