@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         }
 
         gamedata.rankModeUnlocked = false;
+        gamedata.rankModeUnlockPopupShown = false;
         SaveLoadManager.Instance?.SaveGame();
         Debug.Log("[GameManager] 스테이지 해금 초기화 (1스테이지만 해금)");
     }
@@ -257,6 +258,25 @@ public class GameManager : MonoBehaviour
         if (gamedata.rankModeUnlocked) return; // 이미 해금됨
 
         gamedata.rankModeUnlocked = true;
+        SaveLoadManager.Instance?.SaveGame();
+    }
+
+    /// <summary>
+    /// 랭크모드 해금 팝업을 띄워야 하는지 (해금됨 + 아직 확인 안 함)
+    /// </summary>
+    public bool ShouldShowRankModeUnlockPopup()
+    {
+        return gamedata.rankModeUnlocked && !gamedata.rankModeUnlockPopupShown;
+    }
+
+    /// <summary>
+    /// 랭크모드 해금 팝업 확인 처리 (이후 다시 표시되지 않음, 데이터 초기화 시 리셋)
+    /// </summary>
+    public void MarkRankModeUnlockPopupShown()
+    {
+        if (gamedata.rankModeUnlockPopupShown) return;
+
+        gamedata.rankModeUnlockPopupShown = true;
         SaveLoadManager.Instance?.SaveGame();
     }
 

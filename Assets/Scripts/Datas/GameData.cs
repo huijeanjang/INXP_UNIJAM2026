@@ -57,6 +57,7 @@ public class GameData
     /// </summary>
     public List<bool> stageUnlocked;
     public bool rankModeUnlocked = false; // 랭크모드 해금 여부
+    public bool rankModeUnlockPopupShown = false; // 랭크모드 해금 팝업 확인 여부
 
     /// <summary>
     /// 스테이지별 하이스코어 저장용

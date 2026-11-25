@@ -108,6 +108,7 @@ public class SaveLoadManager : MonoBehaviour
             // 랭크모드 데이터 저장
             data.rankModeHighScore = GameManager.Instance.GameData.rankModeHighScore;
             data.rankModeUnlocked = GameManager.Instance.GameData.rankModeUnlocked;
+            data.rankModeUnlockPopupShown = GameManager.Instance.GameData.rankModeUnlockPopupShown;
         }
 
         return data;
@@ -167,6 +168,7 @@ public class SaveLoadManager : MonoBehaviour
             // 랭크모드 데이터 불러오기
             GameManager.Instance.GameData.rankModeHighScore = data.rankModeHighScore;
             GameManager.Instance.GameData.rankModeUnlocked = data.rankModeUnlocked;
+            GameManager.Instance.GameData.rankModeUnlockPopupShown = data.rankModeUnlockPopupShown;
         }
     }
 
